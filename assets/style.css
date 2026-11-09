@@ -1,0 +1,88 @@
+/* 國民法官新手村｜共用樣式。新增頁面請沿用這裡的 class，不要在頁面內寫 inline style（見 AGENTS.md）。 */
+:root {
+  --bg: #F5F7F9;
+  --surface: #FFFFFF;
+  --ink: #18222D;
+  --muted: #55616D;
+  --line: #D8DEE4;
+  --accent: #1E5F74;
+  --accent-soft: #E3EEF2;
+  --mark: #A8680E;
+  --sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --serif: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F161C; --surface: #151E26; --ink: #E6EBF0; --muted: #9AA7B3;
+    --line: #26323D; --accent: #7BBBD0; --accent-soft: #1A2A33; --mark: #E0A64A;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F161C; --surface: #151E26; --ink: #E6EBF0; --muted: #9AA7B3;
+  --line: #26323D; --accent: #7BBBD0; --accent-soft: #1A2A33; --mark: #E0A64A;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1rem/1.85 var(--sans); }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+.site-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem 1.5rem; padding: .9rem 1rem; border-bottom: 1px solid var(--line); background: var(--surface); }
+.site-head .brand { font: 700 1.15rem var(--serif); color: var(--ink); text-decoration: none; margin-right: auto; }
+.site-head nav { display: flex; gap: 1.1rem; overflow-x: auto; max-width: 100%; font-size: .92rem; }
+.site-head nav a { color: var(--muted); text-decoration: none; white-space: nowrap; padding: .2rem 0; }
+.site-head nav a:hover { color: var(--accent); text-decoration: underline; }
+
+main { width: 100%; max-width: 44rem; margin: 0 auto; padding: 2rem 1rem 3rem; }
+h1 { font: 700 clamp(1.8rem, 5vw, 2.5rem)/1.3 var(--serif); margin: 0 0 .75rem; }
+h2 { font: 600 1.25rem/1.5 var(--serif); margin: 2.5rem 0 .75rem; padding-top: .9rem; border-top: 1px solid var(--line); }
+.lead { font-size: 1.1rem; color: var(--ink); margin: 0 0 1.25rem; max-width: 36rem; }
+
+.hero { padding: 1.5rem 0 .5rem; }
+.seats { display: flex; gap: .55rem; align-items: center; margin: 1.5rem 0 .4rem; }
+.seats span { width: 1.6rem; height: 1.6rem; display: inline-block; }
+.seats .j { background: var(--accent); }
+.seats .c { border: 2px solid var(--accent); border-radius: 50%; }
+.seats-cap { color: var(--muted); font-size: .85rem; margin: 0; }
+
+.cards { list-style: none; margin: 0; padding: 0; display: grid; gap: .75rem; }
+.cards a { display: block; padding: 1rem 1.1rem; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 4px; text-decoration: none; color: var(--ink); }
+.cards a:hover { background: var(--accent-soft); }
+.cards strong { display: block; font: 600 1.1rem var(--serif); }
+.cards span { display: block; color: var(--muted); font-size: .95rem; }
+.cards em { display: block; font-style: normal; font-size: .85rem; color: var(--mark); margin-top: .2rem; }
+
+.chips { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; font-size: .9rem; color: var(--muted); margin-bottom: .5rem; }
+.chips a { padding: .1rem .6rem; border: 1px solid var(--line); border-radius: 99px; text-decoration: none; background: var(--surface); }
+.chips a:hover { background: var(--accent-soft); }
+
+.plain ul, .notes ul { padding-left: 1.2rem; margin: 0; }
+.plain li, .notes li { margin: .6rem 0; }
+.qa details { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: .6rem 1rem; margin: .6rem 0; }
+.qa summary { cursor: pointer; font-weight: 500; }
+.qa p { margin: .5rem 0 .2rem; }
+
+/* 條文原文：仿法規排版，條號掛在左側 */
+.law-quote { display: grid; grid-template-columns: 4.2rem 1fr; gap: 0 1rem; padding: 1.25rem 0; border-top: 1px solid var(--line); scroll-margin-top: 1rem; }
+.law-quote:first-of-type { border-top: 0; }
+.art-no { font-family: var(--serif); color: var(--mark); text-align: right; line-height: 1.1; padding-top: .15rem; }
+.art-no span { display: block; font-size: 1.9rem; font-weight: 700; }
+.art-no small { font-size: .8rem; font-weight: 400; }
+.art-body { font-family: var(--serif); line-height: 1.95; }
+.art-body p { margin: 0 0 .35rem; }
+.art-body p.item { padding-left: 1.5rem; }
+.art-src { grid-column: 2; margin: .3rem 0 0; font: .8rem/1.6 var(--sans); color: var(--muted); }
+.art-src span { margin-right: .75rem; }
+
+.pager { display: flex; justify-content: space-between; gap: 1rem; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.pager a { font-weight: 500; }
+.site-foot { max-width: 44rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--line); }
+.site-foot p { margin: .2rem 0; }
+
+@media (max-width: 34rem) {
+  .law-quote { grid-template-columns: 1fr; }
+  .art-no { text-align: left; display: flex; align-items: baseline; gap: .15rem; }
+  .art-no span { display: inline; font-size: 1.6rem; }
+  .art-src { grid-column: 1; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
